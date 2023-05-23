@@ -51,20 +51,20 @@ namespace Foto
 
         private void textBoxPrice9_TextChanged(object sender, EventArgs e)
         {
-            ChangeSettingsPrice(textBoxPrice9, SetPrice9);
+            ChangeSettingsPrice(textBoxPrice9, SetPrice9, settings.Price9x12);
         }
 
         private void textBoxPrice12_TextChanged(object sender, EventArgs e)
         {
-            ChangeSettingsPrice(textBoxPrice12, SetPrice12);
+            ChangeSettingsPrice(textBoxPrice12, SetPrice12, settings.Price12x15);
         }
 
         private void textBoxPrice18_TextChanged(object sender, EventArgs e)
         {
-            ChangeSettingsPrice(textBoxPrice18, SetPrice18);
+            ChangeSettingsPrice(textBoxPrice18, SetPrice18, settings.Price18x24);
         }
 
-        private void ChangeSettingsPrice(TextBox textBox, Action<decimal> SetValue)
+        private void ChangeSettingsPrice(TextBox textBox, Action<decimal> SetValue, decimal oldPrice)
         {
             if (decimal.TryParse(textBox.Text, out var result))
             {
@@ -84,7 +84,7 @@ namespace Foto
             }
             else
             {
-                textBox.Text = price.ToString();
+                textBox.Text = oldPrice.ToString();
             }
         }
 
